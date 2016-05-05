@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>LoginBG.png</file>
+        <file>login_Error.png</file>
+        <file>uiBG.png</file>
+        <file>block.png</file>
+        <file>uidBG.png</file>
+        <file>leftBG.png</file>
+        <file>11.png</file>
+        <file>9.png</file>
+        <file>18.png</file>
+    </qresource>
+</RCC>
