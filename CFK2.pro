@@ -15,18 +15,21 @@ SOURCES += main.cpp\
     datasturct.cpp \
     mainwindow.cpp \
     init.cpp \
-    deliverwindow.cpp
+    deliverwindow.cpp \
+    bosswindow.cpp
 
 HEADERS  += login.h \
     datastruct.h \
     mainwindow.h \
     global.h \
     init.h \
-    deliverwindow.h
+    deliverwindow.h \
+    bosswindow.h
 
 FORMS    += login.ui \
     mainwindow.ui \
-    deliverwindow.ui
+    deliverwindow.ui \
+    bosswindow.ui
 
 OTHER_FILES +=
 

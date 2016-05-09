@@ -20,6 +20,7 @@
 #include "global.h"
 #include "mainwindow.h"
 #include "deliverwindow.h"
+#include "bosswindow.h"
 
 /********************************************************************
 	created:	2013/12/13 11:34
@@ -109,6 +110,7 @@ void Login::on_Pushbutton_Login_clicked()
     int flag;
     customerwindow *temp;
     deliverwindow *temp2;
+    bossWindow *temp3;
     flag = User_check(ui->Editline_Username->text(),ui->Editline_Password->text());//用户名密码判断
 	/*返回结构1是用户，-1是送餐员，0是错误*/
     switch(flag)
@@ -121,6 +123,11 @@ void Login::on_Pushbutton_Login_clicked()
     case -1:
         temp2 = new deliverwindow;
         temp2->show();
+        this->close();
+        break;
+    case -2:
+        temp3 = new bossWindow;
+        temp3->show();
         this->close();
         break;
     case 0:
@@ -298,6 +305,10 @@ int Login::User_check (QString username,QString password)
 			//查找成功,是送餐员
             active_scy = i;//登录
             return -1;//返回
+            if (active_scy == 0)//boss
+            {
+                return -2;
+            }
         }
     }
 	/*如果不是就检测是否是用户*/

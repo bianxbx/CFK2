@@ -1,4 +1,4 @@
-#include "deliverwindow.h"
+ï»¿#include "deliverwindow.h"
 
 #include <QString>
 #include <QPropertyAnimation>
@@ -38,52 +38,52 @@ deliverwindow::deliverwindow(QWidget *parent) :
     animation->setStartValue(0);
     animation->setEndValue(1);
     animation->start();
-    //½çÃæ¶¯»­£¬¸Ä±äÍ¸Ã÷¶ÈµÄ·½Ê½³öÏÖ0 - 1½¥±ä
-    //ÉèÖÃ´°Ìå±êÌâÀ¸Òş²Ø²¢ÉèÖÃÎ»ÓÚ¶¥²ã
+    //ç•Œé¢åŠ¨ç”»ï¼Œæ”¹å˜é€æ˜åº¦çš„æ–¹å¼å‡ºç°0 - 1æ¸å˜
+    //è®¾ç½®çª—ä½“æ ‡é¢˜æ éšè—å¹¶è®¾ç½®ä½äºé¡¶å±‚
     QPalette palette;
     setWindowOpacity(1);
     QPixmap pixmap("image/uiBG.png");
     palette.setBrush(ui->Under->backgroundRole(),QBrush(pixmap));
     ui->Under->setPalette(palette);
-    ui->Under->setMask(pixmap.mask());  //¿ÉÒÔ½«Í¼Æ¬ÖĞÍ¸Ã÷²¿·ÖÏÔÊ¾ÎªÍ¸Ã÷µÄ
+    ui->Under->setMask(pixmap.mask());  //å¯ä»¥å°†å›¾ç‰‡ä¸­é€æ˜éƒ¨åˆ†æ˜¾ç¤ºä¸ºé€æ˜çš„
     ui->Under->setAutoFillBackground(true);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    //¹¹½¨×îĞ¡»¯¡¢×î´ó»¯¡¢¹Ø±Õ°´Å¥
+    //æ„å»ºæœ€å°åŒ–ã€æœ€å¤§åŒ–ã€å…³é—­æŒ‰é’®
     QToolButton *minButton = new QToolButton(this);
     QToolButton *closeButton= new QToolButton(this);
     connect (minButton,SIGNAL(clicked()),this,SLOT(showMinimized()));
-    connect (closeButton,SIGNAL(clicked()),this,SLOT(wind_close()));//¹¹½¨ĞÂ²Û ¹Ø±Õµ±Ç°´°¿Ú=×¢Ïú
-    //»ñÈ¡×îĞ¡»¯¡¢¹Ø±Õ°´Å¥Í¼±ê
+    connect (closeButton,SIGNAL(clicked()),this,SLOT(wind_close()));//æ„å»ºæ–°æ§½ å…³é—­å½“å‰çª—å£=æ³¨é”€
+    //è·å–æœ€å°åŒ–ã€å…³é—­æŒ‰é’®å›¾æ ‡
     QPixmap minPix  = style()->standardPixmap(QStyle::SP_TitleBarMinButton);
     QPixmap closePix = style()->standardPixmap(QStyle::SP_TitleBarCloseButton);
-    //ÉèÖÃ×îĞ¡»¯¡¢¹Ø±Õ°´Å¥Í¼±ê
+    //è®¾ç½®æœ€å°åŒ–ã€å…³é—­æŒ‰é’®å›¾æ ‡
     minButton->setIcon(minPix);
     closeButton->setIcon(closePix);
-    //ÉèÖÃ×îĞ¡»¯¡¢¹Ø±Õ°´Å¥ÔÚ½çÃæµÄÎ»ÖÃ
+    //è®¾ç½®æœ€å°åŒ–ã€å…³é—­æŒ‰é’®åœ¨ç•Œé¢çš„ä½ç½®
     minButton->setGeometry(700-30,10,20,20);
     closeButton->setGeometry(700-8,10,20,20);
-    //ÉèÖÃÊó±êÒÆÖÁ°´Å¥ÉÏµÄÌáÊ¾ĞÅÏ¢
-    minButton->setToolTip(tr("×îĞ¡»¯"));
-    closeButton->setToolTip(tr("¹Ø±Õ"));
-    //ÉèÖÃ×îĞ¡»¯¡¢¹Ø±Õ°´Å¥µÄÑùÊ½
+    //è®¾ç½®é¼ æ ‡ç§»è‡³æŒ‰é’®ä¸Šçš„æç¤ºä¿¡æ¯
+    minButton->setToolTip(tr("æœ€å°åŒ–"));
+    closeButton->setToolTip(tr("å…³é—­"));
+    //è®¾ç½®æœ€å°åŒ–ã€å…³é—­æŒ‰é’®çš„æ ·å¼
     minButton->setStyleSheet("background-color:transparent;");
     closeButton->setStyleSheet("background-color:transparent;");
-    ui->frame_view->hide();//²é¿´Ò³ÃæÒş²Ø
-	ui->label_username->setText(all_SCY[active_scy].show_username());//ÓÃ»§ÃûÉèÖÃ
-	ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//×Ü½ğ¶î
-	ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//×Ü¶©µ¥Êı
+    ui->frame_view->hide();//æŸ¥çœ‹é¡µé¢éšè—
+	ui->label_username->setText(all_SCY[active_scy].show_username());//ç”¨æˆ·åè®¾ç½®
+	ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//æ€»é‡‘é¢
+	ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//æ€»è®¢å•æ•°
 #pragma endregion window initialize
 
-	#pragma region ËÍ²ÍÁĞ±í³õÊ¼»¯
-    model_delivering->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("ID")));//ÉèÖÃĞĞ±ê
+	#pragma region é€é¤åˆ—è¡¨åˆå§‹åŒ–
+    model_delivering->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("ID")));//è®¾ç½®è¡Œæ ‡
     model_delivering->setHorizontalHeaderItem(1,new QStandardItem(QObject::tr("Address")));
     model_delivering->setHorizontalHeaderItem(2,new QStandardItem(QObject::tr("Amount")));
-    ui->tableView_ing ->setSelectionBehavior(QAbstractItemView::SelectRows);//±í¸ñÉèÖÃ,µã¸ñÑ¡ÖĞĞĞ
-    ui->tableView_ing->setEditTriggers(QAbstractItemView::NoEditTriggers);//±í¸ñÉèÖÃ,²»¿É±à¼­
-    ui->tableView_ing->setModel(model_delivering);//±í¸ñÓë MODEL ¹ØÁª
+    ui->tableView_ing ->setSelectionBehavior(QAbstractItemView::SelectRows);//è¡¨æ ¼è®¾ç½®,ç‚¹æ ¼é€‰ä¸­è¡Œ
+    ui->tableView_ing->setEditTriggers(QAbstractItemView::NoEditTriggers);//è¡¨æ ¼è®¾ç½®,ä¸å¯ç¼–è¾‘
+    ui->tableView_ing->setModel(model_delivering);//è¡¨æ ¼ä¸ MODEL å…³è”
 
-    ui->tableView_ing->setColumnWidth(0,50);//ÁĞ¿íÉèÖÃ
+    ui->tableView_ing->setColumnWidth(0,50);//åˆ—å®½è®¾ç½®
     ui->tableView_ing->setColumnWidth(1,200);
     ui->tableView_ing->setColumnWidth(2,50);
 
@@ -109,10 +109,10 @@ deliverwindow::deliverwindow(QWidget *parent) :
     ui->tableView_ed->setColumnWidth(1,200);
     ui->tableView_ed->setColumnWidth(2,50);
 
-    set_view_ing();//ÉèÖÃÕıÔÚÅäËÍtableview
-    set_view_to();//ÉèÖÃ¼´½«ÅäËÍtableview
-    set_view_ed();//ÉèÖÃÒÑ¾­ÅäËÍtableview
-#pragma endregion ËÍ²ÍÁĞ±í³õÊ¼»¯
+    set_view_ing();//è®¾ç½®æ­£åœ¨é…é€tableview
+    set_view_to();//è®¾ç½®å³å°†é…é€tableview
+    set_view_ed();//è®¾ç½®å·²ç»é…é€tableview
+#pragma endregion é€é¤åˆ—è¡¨åˆå§‹åŒ–
 }
 
 deliverwindow::~deliverwindow()
@@ -130,7 +130,7 @@ Qualifier:
 Created Time:	  	2013/12/13 11:15
 Last Change:  		2013/12/13 11:15
 version:	1.0.0
-Description:¹Ø±Õµ±Ç°´°¿Ú´ò¿ªlogin´°¿Ú	
+Description:å…³é—­å½“å‰çª—å£æ‰“å¼€loginçª—å£	
 Remark:			
 *************************************/
 void deliverwindow::wind_close()
@@ -151,43 +151,43 @@ Qualifier:
 Created Time:	  	2013/11/24 12:30
 Last Change:  		2013/11/24 12:30
 version:	1.0.0
-Description:ÏÔÊ¾ÕıÔÚÅäËÍ¶©µ¥	
+Description:æ˜¾ç¤ºæ­£åœ¨é…é€è®¢å•	
 Remark:			
 *************************************/
 void deliverwindow::set_view_ing()
 {
-    int order_id_tmp = all_SCY[active_scy].show_delivering_order_id();//ÕıÔÚÅäËÍºÅ
+    int order_id_tmp = all_SCY[active_scy].show_delivering_order_id();//æ­£åœ¨é…é€å·
     int food_id,food_num,i;
     QMap<int, int>::iterator it;
 
     if (order_id_tmp != -1)
     {
-		//Èç¹ûÓĞÕıÔÚÅäËÍµÄ
-        model_delivering->setItem(0, 0, new QStandardItem(QString::number(order_id_tmp,10)));//ÉèÖÃ¶©µ¥ºÅ
-        model_delivering->setItem(0, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));//ÉèÖÃµØÖ·
-        model_delivering->setItem(0, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));//ÉèÖÃ×Ü½ğ¶î
-        it = all_orders[order_id_tmp].item.begin();//µü´úÆ÷Ö¸Ïò¶©µ¥µÄµÚÒ»¸ö²ËÆ·
+		//å¦‚æœæœ‰æ­£åœ¨é…é€çš„
+        model_delivering->setItem(0, 0, new QStandardItem(QString::number(order_id_tmp,10)));//è®¾ç½®è®¢å•å·
+        model_delivering->setItem(0, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));//è®¾ç½®åœ°å€
+        model_delivering->setItem(0, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));//è®¾ç½®æ€»é‡‘é¢
+        it = all_orders[order_id_tmp].item.begin();//è¿­ä»£å™¨æŒ‡å‘è®¢å•çš„ç¬¬ä¸€ä¸ªèœå“
 
-		/*Ñ­»·Êä³öÃ¿¸ö²ËÆ·*/
+		/*å¾ªç¯è¾“å‡ºæ¯ä¸ªèœå“*/
         for (i = 0;i<all_orders[order_id_tmp].item.size();i++)
         {
-            food_id = it.key();//Ê³ÎïºÅ
-            food_num = it.value();//Ê³ÎïÊıÁ¿
+            food_id = it.key();//é£Ÿç‰©å·
+            food_num = it.value();//é£Ÿç‰©æ•°é‡
             model_delivering->setHorizontalHeaderItem(i*2+3,new QStandardItem(QObject::tr("Name")));
             model_delivering->setHorizontalHeaderItem(i*2+4,new QStandardItem(QObject::tr("Number")));
-            model_delivering->setItem(0, i*2+3, new QStandardItem(all_food[food_id].show_food_name()));//ÉèÖÃÊ³ÎïÃû×Ö
-            model_delivering->setItem(0, i*2+4, new QStandardItem(QString::number(food_num,10)));//ÉèÖÃÊ³ÎïÊıÁ¿
+            model_delivering->setItem(0, i*2+3, new QStandardItem(all_food[food_id].show_food_name()));//è®¾ç½®é£Ÿç‰©åå­—
+            model_delivering->setItem(0, i*2+4, new QStandardItem(QString::number(food_num,10)));//è®¾ç½®é£Ÿç‰©æ•°é‡
             it++;
         }
     }
     else
     {
-		//Èç¹ûÃ»ÓĞÕıÔÚÅäËÍµÄ,Çå¿Õ
+		//å¦‚æœæ²¡æœ‰æ­£åœ¨é…é€çš„,æ¸…ç©º
         model_delivering->setColumnCount(3);
         model_delivering->setRowCount(0);
-        //        model_delivering->setItem(0, 0, new QStandardItem("¿Õ"));
-        //        model_delivering->setItem(0, 1, new QStandardItem("¿Õ"));
-        //        model_delivering->setItem(0, 2, new QStandardItem("¿Õ"));
+        //        model_delivering->setItem(0, 0, new QStandardItem("ç©º"));
+        //        model_delivering->setItem(0, 1, new QStandardItem("ç©º"));
+        //        model_delivering->setItem(0, 2, new QStandardItem("ç©º"));
     }
 }
 /************************************
@@ -200,7 +200,7 @@ Qualifier:
 Created Time:	  	2013/11/24 12:30
 Last Change:  		2013/11/24 12:30
 version:	1.0.0
-Description:ÏÔÊ¾´ıËÍ¶©µ¥ÁĞ±í	
+Description:æ˜¾ç¤ºå¾…é€è®¢å•åˆ—è¡¨	
 Remark:			
 *************************************/
 void deliverwindow::set_view_to()
@@ -211,7 +211,7 @@ void deliverwindow::set_view_to()
 
     if (all_SCY[active_scy].deliver_list.size() != 0)
     {
-		//Êä³öÃ¿¸ö¶©µ¥
+		//è¾“å‡ºæ¯ä¸ªè®¢å•
         for (i = 0;i<all_SCY[active_scy].deliver_list.size();i++)
         {
             order_id_tmp = all_SCY[active_scy].deliver_list[i];
@@ -219,7 +219,7 @@ void deliverwindow::set_view_to()
             model_to_deliver->setItem(i, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));
             model_to_deliver->setItem(i, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));
             it = all_orders[order_id_tmp].item.begin();
-			//Êä³öÃ¿¸ö²ËÆ·
+			//è¾“å‡ºæ¯ä¸ªèœå“
             for (j = 0;j<all_orders[order_id_tmp].item.size();j++)
             {
                 food_id = it.key();
@@ -246,7 +246,7 @@ void deliverwindow::set_view_ed()
 
     if (all_SCY[active_scy].finish_delivered_list.size() != 0)
     {
-        //Êä³öÃ¿¸ö¶©µ¥
+        //è¾“å‡ºæ¯ä¸ªè®¢å•
         for (i = 0;i<all_SCY[active_scy].finish_delivered_list.size();i++)
         {
             order_id_tmp = all_SCY[active_scy].finish_delivered_list[i];
@@ -254,7 +254,7 @@ void deliverwindow::set_view_ed()
             model_delivered->setItem(i, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));
             model_delivered->setItem(i, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));
             it = all_orders[order_id_tmp].item.begin();
-            //Êä³öÃ¿¸ö²ËÆ·
+            //è¾“å‡ºæ¯ä¸ªèœå“
             for (j = 0;j<all_orders[order_id_tmp].item.size();j++)
             {
                 food_id = it.key();
@@ -284,18 +284,18 @@ Qualifier:
 Created Time:	  	2013/11/24 12:36
 Last Change:  		2013/11/24 12:36
 version:	1.0.0
-Description:½ÓÊÜ¶©µ¥,´Ó´ıËÍÖĞÈ¡³ö·Åµ½ÕıÔÚÅäËÍ	
+Description:æ¥å—è®¢å•,ä»å¾…é€ä¸­å–å‡ºæ”¾åˆ°æ­£åœ¨é…é€	
 Remark:			
 *************************************/
 void deliverwindow::on_pushButton_acc_clicked()
 {
     if (all_SCY[active_scy].deliver_list.size() != 0&&all_SCY[active_scy].show_delivering_order_id() == -1)
     {
-		//Èç¹û  (ÓĞ´ıËÍ¶©µ¥ &&  Ã»ÓĞÕıÔÚÅäËÍµÄ¶©µ¥)
-        all_SCY[active_scy].acc_order();//½ÓÊÜ¶©µ¥
-        model_to_deliver->setRowCount(0);//Çå¿ÕÔ­¶©µ¥
-        set_view_to();//¸Ä±ä½çÃæ´ıËÍtableviewÏÔÊ¾
-        set_view_ing();//¸Ä±ä½çÃæÕıÔÚËÍtableviewÏÔÊ¾
+		//å¦‚æœ  (æœ‰å¾…é€è®¢å• &&  æ²¡æœ‰æ­£åœ¨é…é€çš„è®¢å•)
+        all_SCY[active_scy].acc_order();//æ¥å—è®¢å•
+        model_to_deliver->setRowCount(0);//æ¸…ç©ºåŸè®¢å•
+        set_view_to();//æ”¹å˜ç•Œé¢å¾…é€tableviewæ˜¾ç¤º
+        set_view_ing();//æ”¹å˜ç•Œé¢æ­£åœ¨é€tableviewæ˜¾ç¤º
     }
     else
     {
@@ -313,22 +313,22 @@ Qualifier:
 Created Time:	  	2013/11/24 12:37
 Last Change:  		2013/11/24 12:37
 version:	1.0.0
-Description:Íê³É¶©µ¥,½²ÕıÔÚÅäËÍ¶©µ¥É¾³ı.Íê³ÉÍ³¼Æ	
+Description:å®Œæˆè®¢å•,è®²æ­£åœ¨é…é€è®¢å•åˆ é™¤.å®Œæˆç»Ÿè®¡	
 Remark:			
 *************************************/
 void deliverwindow::on_pushButton_fin_clicked()
 {
-    int order_id_tmp = all_SCY[active_scy].show_delivering_order_id();//ÕıÔÚÅäËÍ¶©µ¥ºÅ
+    int order_id_tmp = all_SCY[active_scy].show_delivering_order_id();//æ­£åœ¨é…é€è®¢å•å·
     if (order_id_tmp != -1)
     {
-		//ÓĞÕıÔÚÅäËÍµÄ
-        all_SCY[active_scy].finish_delivery();//Íê³ÉÅäËÍ
-        ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//×Ü½ğ¶î¸Ä±ä·´Ó³ÔÚ½çÃæÉÏ
-        ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//×Ü¶©µ¥¸Ä±ä·´Ó³ÔÚ½çÃæÉÏ
-        all_orders[order_id_tmp].set_state_true();//¸Ä±ä¶©µ¥×´Ì¬
-        all_DCZ[all_orders[order_id_tmp].show_dcz_id()].finish_order();//µã²ÍÕßÊÕµ½ÍâÂô
-		set_view_ing();//¸Ä±ä½çÃæÕıÔÚËÍtableviewÏÔÊ¾
-        set_view_ed();//¸Ä±ä½çÃæÍê³ÉtableviewÏÔÊ¾
+		//æœ‰æ­£åœ¨é…é€çš„
+        all_SCY[active_scy].finish_delivery();//å®Œæˆé…é€
+        ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//æ€»é‡‘é¢æ”¹å˜åæ˜ åœ¨ç•Œé¢ä¸Š
+        ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//æ€»è®¢å•æ”¹å˜åæ˜ åœ¨ç•Œé¢ä¸Š
+        all_orders[order_id_tmp].set_state_true();//æ”¹å˜è®¢å•çŠ¶æ€
+        all_DCZ[all_orders[order_id_tmp].show_dcz_id()].finish_order();//ç‚¹é¤è€…æ”¶åˆ°å¤–å–
+		set_view_ing();//æ”¹å˜ç•Œé¢æ­£åœ¨é€tableviewæ˜¾ç¤º
+        set_view_ed();//æ”¹å˜ç•Œé¢å®Œæˆtableviewæ˜¾ç¤º
     }
     else
     {
@@ -346,7 +346,7 @@ Qualifier:
 Created Time:	  	2013/12/13 11:24
 Last Change:  		2013/12/13 11:24
 version:	1.0.0
-Description:Ò³ÃæÇĞ»»,ÔÚ²éÑ¯¶©µ¥Óë²Ù×÷½çÃæ¼äÇĞ»»	
+Description:é¡µé¢åˆ‡æ¢,åœ¨æŸ¥è¯¢è®¢å•ä¸æ“ä½œç•Œé¢é—´åˆ‡æ¢	
 Remark:			
 *************************************/
 void deliverwindow::on_pushButton_change_clicked()

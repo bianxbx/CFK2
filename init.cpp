@@ -171,7 +171,7 @@ void file_init(int flag)
         stream << (quint32)0xB0E4D0B3;
         stream << (qint32)101;
         stream.setVersion(QDataStream::Qt_4_0);
-
+        all_SCY.push_back(SCY("boss","d29c5d631e605d5e109029b6bfa39591",0,0,-1,delivering_id_list_tmp,0,delivering_id_list_tmp));//boss boss
         all_SCY.push_back(SCY("wang","ba0484cef03689235c64947a9592df22",0,0,-1,delivering_id_list_tmp,0,delivering_id_list_tmp));
         all_SCY.push_back(SCY("nuri","8168011134d0a62b7c096e610fb360bd",0,0,-1,delivering_id_list_tmp,0,delivering_id_list_tmp));
 

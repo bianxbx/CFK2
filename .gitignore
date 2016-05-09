@@ -5,3 +5,4 @@ vc100.pdb
 *.Debug
 object_script.CFK1.Release
 *.autosave
+*.user.*
