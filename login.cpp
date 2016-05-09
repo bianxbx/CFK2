@@ -304,11 +304,13 @@ int Login::User_check (QString username,QString password)
         {
 			//查找成功,是送餐员
             active_scy = i;//登录
-            return -1;//返回
             if (active_scy == 0)//boss
             {
                 return -2;
             }
+            else
+                return -1;//返回
+
         }
     }
 	/*如果不是就检测是否是用户*/
