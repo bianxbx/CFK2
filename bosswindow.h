@@ -30,6 +30,7 @@ private slots:
     void on_tableView_menu_doubleClicked(const QModelIndex &index);
 
 
+    void on_pushButton_add_menu_clicked();
 };
 
 

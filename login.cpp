@@ -179,6 +179,7 @@ void Login::wind_close()
     QFile filedcz("dcz.dat");
     QFile filescy("scy.dat");
     QFile fileord("ord.dat");
+    QFile filefoo("foo.dat");
 
 #pragma region 点餐者
     filedcz.open(QIODevice::WriteOnly);//只写
@@ -227,6 +228,22 @@ void Login::wind_close()
         stream2 << all_orders[i];
     }
     fileord.close();
+#pragma endregion 订单
+
+#pragma region 订单
+    filefoo.open(QIODevice::WriteOnly);
+    QDataStream stream3(&filefoo);
+    stream3 <<  (quint32)0xB0E4D0B3;
+    stream3 << (qint32)101;
+    stream3.setVersion(QDataStream::Qt_4_0);
+
+    size = all_food.size();
+    stream3 << size;
+    for (int i = 0; i < size;i++)
+    {
+        stream3 << all_food[i];
+    }
+    filefoo.close();
 #pragma endregion 订单
 
     this->close();//最后关闭窗口

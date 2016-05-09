@@ -220,3 +220,18 @@ void bossWindow::on_tableView_menu_doubleClicked(const QModelIndex &index)
     model_menu2->removeRow(id_tmp);//在界面显示
     all_food.remove(id_tmp);
 }
+
+void bossWindow::on_pushButton_add_menu_clicked()
+{
+    QString food_name;
+    int price;
+    food_name = ui->lineEdit_add_menu->text();
+    price = ui->spinBox_add_menu->value();
+    int i = all_food.size()-1;
+    Food *tmp_food = new Food (food_name,price,i);
+    all_food.push_back(*tmp_food);
+    i += 1;
+    model_menu2->setItem(i, 0, new QStandardItem(all_food[i].show_food_name()));//输出菜品名字
+    model_menu2->setItem(i, 1, new QStandardItem(QString::number(all_food[i].show_food_price(),10)));//价格
+    model_menu2->setItem(i, 2, new QStandardItem("★★★★★"));//评分
+}
