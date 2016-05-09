@@ -13,3 +13,5 @@
 > > VC 2010 installed
 >
 > Shadow build
+
+boss added
