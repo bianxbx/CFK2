@@ -385,7 +385,7 @@ void customerwindow::on_pushButton_order_clicked()
     QTime time;
     time= QTime::currentTime();
     qsrand(time.msec()+time.second()*1000);
-	int randn=qrand()%all_SCY.size();//随机指派可用订餐员
+    int randn=qrand()%(all_SCY.size()-1) + 1;//随机指派可用订餐员
 	int scy_num = randn;    
     if (all_DCZ[active_dcz].show_account()>= amount_tmp)
     {
