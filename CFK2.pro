@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += testlib
+
 
 TARGET = CFK1
 TEMPLATE = app
@@ -16,7 +18,8 @@ SOURCES += main.cpp\
     mainwindow.cpp \
     init.cpp \
     deliverwindow.cpp \
-    bosswindow.cpp
+    bosswindow.cpp \
+    testcase.cpp
 
 HEADERS  += login.h \
     datastruct.h \
@@ -24,7 +27,8 @@ HEADERS  += login.h \
     global.h \
     init.h \
     deliverwindow.h \
-    bosswindow.h
+    bosswindow.h \
+    testcase.h
 
 FORMS    += login.ui \
     mainwindow.ui \
