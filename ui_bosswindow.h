@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'bosswindow.ui'
 **
-** Created: Wed May 11 14:46:50 2016
+** Created: Wed Jun 15 17:04:08 2016
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -58,7 +58,7 @@ public:
         Under->setObjectName(QString::fromUtf8("Under"));
         Under->setGeometry(QRect(0, 0, 735, 638));
         Under->setStyleSheet(QString::fromUtf8("#Under{\n"
-"	border-image: url(:/image/uidBG.png);\n"
+"	border-image: url(:/image/uibBG.png);\n"
 "}"));
         Under->setFrameShape(QFrame::StyledPanel);
         Under->setFrameShadow(QFrame::Raised);
@@ -71,7 +71,8 @@ public:
 "text-align:center;"));
         frame_order = new QFrame(Under);
         frame_order->setObjectName(QString::fromUtf8("frame_order"));
-        frame_order->setGeometry(QRect(7, 94, 16, 531));
+        frame_order->setEnabled(true);
+        frame_order->setGeometry(QRect(7, 94, 711, 531));
         frame_order->setFrameShape(QFrame::StyledPanel);
         frame_order->setFrameShadow(QFrame::Raised);
         label_3 = new QLabel(frame_order);
@@ -82,7 +83,7 @@ public:
 "font-weight:bold;\n"
 "text-align:center;"));
         tableView_orders = new QTableView(frame_order);
-        tableView_orders->setObjectName(QString::fromUtf8("tableView_to"));
+        tableView_orders->setObjectName(QString::fromUtf8("tableView_orders"));
         tableView_orders->setGeometry(QRect(40, 90, 621, 401));
         lcdNumber_counter = new QLCDNumber(Under);
         lcdNumber_counter->setObjectName(QString::fromUtf8("lcdNumber_counter"));
@@ -169,7 +170,7 @@ public:
     {
         bossWindow->setWindowTitle(QApplication::translate("bossWindow", "Form", 0, QApplication::UnicodeUTF8));
         label_username->setText(QApplication::translate("bossWindow", "USERNAME", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("bossWindow", "\345\275\223\345\211\215\350\256\242\345\215\225", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("bossWindow", "\350\256\242\345\215\225\344\277\241\346\201\257", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("bossWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

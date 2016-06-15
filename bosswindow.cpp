@@ -71,7 +71,9 @@ bossWindow::bossWindow(QWidget *parent) :
     //设置最小化、关闭按钮的样式
     minButton->setStyleSheet("background-color:transparent;");
     closeButton->setStyleSheet("background-color:transparent;");
-    ui->frame_order->show();//查看页面隐藏
+    qDebug()<< "asdasd";
+//    ui->frame_menu->hide();
+    ui->frame_order->hide();//查看页面隐藏
     ui->label_username->setText(all_SCY[active_scy].show_username());//用户名设置
     ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额
     ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单数
@@ -79,7 +81,6 @@ bossWindow::bossWindow(QWidget *parent) :
 #pragma endregion window initialize
 
     int i;
-    window_flag3 = 0;
 
     /*菜单初始化*/
     model_menu2->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("Name")));//行标设置
@@ -105,8 +106,8 @@ bossWindow::bossWindow(QWidget *parent) :
     model_orders->setHorizontalHeaderItem(1,new QStandardItem(QObject::tr("Address")));
     model_orders->setHorizontalHeaderItem(2,new QStandardItem(QObject::tr("Amount")));
     model_orders->setHorizontalHeaderItem(3,new QStandardItem(QObject::tr("state")));
-    model_orders->setHorizontalHeaderItem(4,new QStandardItem(QObject::tr("CustomerID")));
-    model_orders->setHorizontalHeaderItem(5,new QStandardItem(QObject::tr("DeliverID")));
+    model_orders->setHorizontalHeaderItem(4,new QStandardItem(QObject::tr("Customer")));
+    model_orders->setHorizontalHeaderItem(5,new QStandardItem(QObject::tr("Deliver")));
     ui->tableView_orders ->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView_orders->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView_orders->setModel(model_orders);
@@ -114,6 +115,9 @@ bossWindow::bossWindow(QWidget *parent) :
     ui->tableView_orders->setColumnWidth(0,50);
     ui->tableView_orders->setColumnWidth(1,200);
     ui->tableView_orders->setColumnWidth(2,50);
+    ui->tableView_orders->setColumnWidth(3,80);
+    ui->tableView_orders->setColumnWidth(4,80);
+    ui->tableView_orders->setColumnWidth(5,80);
 
     set_view_orders();
 
@@ -154,8 +158,8 @@ void bossWindow::set_view_orders()
         model_orders->setItem(i, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));
         model_orders->setItem(i, 2, new QStandardItem(QString::number(all_orders[order_id_tmp].show_amount(),10)));
         model_orders->setItem(i, 3, new QStandardItem(state_tmp));
-        model_orders->setItem(i, 4, new QStandardItem(all_SCY[all_orders[order_id_tmp].show_scy_id()].show_username()));
-        model_orders->setItem(i, 5, new QStandardItem(all_DCZ[all_orders[order_id_tmp].show_dcz_id()].show_username()));
+        model_orders->setItem(i, 4, new QStandardItem(all_DCZ[all_orders[order_id_tmp].show_dcz_id()].show_username()));
+        model_orders->setItem(i, 5, new QStandardItem(all_SCY[all_orders[order_id_tmp].show_scy_id()].show_username()));
         // it = all_orders[order_id_tmp].item.begin();
         // //输出每个菜品
         // for (j = 0;j<all_orders[order_id_tmp].item.size();j++)
@@ -319,4 +323,9 @@ void bossWindow::on_pushButton_change_clicked()
         ui->frame_order->hide();
         ui->frame_menu->show();
     }
+}
+
+void bossWindow::on_frame_order_destroyed()
+{
+    qDebug()<<"nothing";
 }

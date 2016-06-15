@@ -23,7 +23,6 @@ public:
     
 private:
     Ui::bossWindow *ui;
-    QTimer *timer;
 
 private slots:
 
@@ -33,6 +32,7 @@ private slots:
 
     void on_pushButton_add_menu_clicked();
     void on_pushButton_change_clicked();
+    void on_frame_order_destroyed();
 };
 
 

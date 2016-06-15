@@ -1,7 +1,8 @@
 #include <QDataStream>
-
+#include <QDebug>
 #include "datastruct.h"
 #include "global.h"
+
 
 /********************************************************************
 	created:	2013/11/24 0:32
@@ -273,8 +274,10 @@ int Order::show_amount()
 }
 QString Order::show_state()
 {
+    qDebug()<<"####" <<int(this->state);
     if (this->state == 1)
     {
+
         return "Delivering";
     }
     else if (this->state == 0)
