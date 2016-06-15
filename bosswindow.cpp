@@ -1,6 +1,7 @@
 ﻿#include "bosswindow.h"
 #include "ui_bosswindow.h"
 
+#include <QCryptographicHash>
 #include <QString>
 #include <QPropertyAnimation>
 #include <QTimer>
@@ -27,6 +28,7 @@
 //QStandardItemModel *model_to_deliver = new QStandardItemModel();
 QStandardItemModel *model_menu2 = new QStandardItemModel();
 QStandardItemModel *model_orders = new QStandardItemModel();
+QStandardItemModel *model_scy= new QStandardItemModel();
 int window_flag3 = 0;
 
 bossWindow::bossWindow(QWidget *parent) :
@@ -49,6 +51,9 @@ bossWindow::bossWindow(QWidget *parent) :
     ui->Under->setPalette(palette);
     ui->Under->setMask(pixmap.mask());  //可以将图片中透明部分显示为透明的
     ui->Under->setAutoFillBackground(true);
+
+    ui->lineEdit_passwd->setEchoMode(QLineEdit::Password);
+
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
     //构建最小化、最大化、关闭按钮
@@ -74,6 +79,7 @@ bossWindow::bossWindow(QWidget *parent) :
     qDebug()<< "asdasd";
 //    ui->frame_menu->hide();
     ui->frame_order->hide();//查看页面隐藏
+    ui->frame_scy->show();
     ui->label_username->setText(all_SCY[active_scy].show_username());//用户名设置
     ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额
     ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单数
@@ -121,6 +127,15 @@ bossWindow::bossWindow(QWidget *parent) :
 
     set_view_orders();
 
+    model_scy->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("ID")));
+    model_scy->setHorizontalHeaderItem(1,new QStandardItem(QObject::tr("Name")));
+    model_scy->setHorizontalHeaderItem(2,new QStandardItem(QObject::tr("Delivering order")));
+    model_scy->setHorizontalHeaderItem(3,new QStandardItem(QObject::tr("Amount count")));
+    model_scy->setHorizontalHeaderItem(4,new QStandardItem(QObject::tr("Order count")));
+    ui->tableView_scy ->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView_scy->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableView_scy->setModel(model_scy);
+    set_view_scy();
 }
 
 bossWindow::~bossWindow()
@@ -175,6 +190,32 @@ void bossWindow::set_view_orders()
     }
     ui->lcdNumber_amount->display(amount);//总金额
     ui->lcdNumber_counter->display(all_orders.size());//总订单数
+}
+
+void bossWindow::set_view_scy()
+{
+
+    int scy_id_tmp;
+    int i;
+    QString tmp;
+    for (i = 1;i<all_SCY.size();i++)
+    {
+        scy_id_tmp = i;
+        if (all_SCY[scy_id_tmp].show_delivering_order_id() == -1)
+        {
+            tmp = "IDLE";
+        }
+        else
+        {
+            tmp = QString::number(all_SCY[scy_id_tmp].show_delivering_order_id());
+        }
+
+        model_scy->setItem(i, 0, new QStandardItem(QString::number(scy_id_tmp,10)));
+        model_scy->setItem(i, 1, new QStandardItem(all_SCY[scy_id_tmp].show_username()));
+        model_scy->setItem(i, 2, new QStandardItem(tmp));
+        model_scy->setItem(i, 3, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_order_count())));
+        model_scy->setItem(i, 4, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_amount_count())));
+    }
 }
 
 ///************************************
@@ -284,6 +325,14 @@ version:	1.0.0
 Description:在菜单的地方双击.加菜进单
 Remark:
 *************************************/
+void bossWindow::on_tableView_scy_doubleClicked(const QModelIndex &index)
+{
+    int id_tmp;
+    id_tmp = index.row()+1;//点击行号就是食物ID号
+    model_scy ->removeRow(id_tmp);//在界面显示
+    all_SCY.remove(id_tmp);
+}
+
 void bossWindow::on_tableView_menu_doubleClicked(const QModelIndex &index)
 {
     int id_tmp;
@@ -317,10 +366,17 @@ void bossWindow::on_pushButton_change_clicked()
         ui->frame_menu->hide();
         ui->frame_order->show();
     }
-    else
+    else if (window_flag3 == 1)
+    {
+        window_flag3 = 2;
+        ui->frame_order->hide();
+        ui->frame_scy->show();
+
+    }
+    else if (window_flag3 == 2)
     {
         window_flag3 = 0;
-        ui->frame_order->hide();
+        ui->frame_scy->hide();
         ui->frame_menu->show();
     }
 }
@@ -328,4 +384,22 @@ void bossWindow::on_pushButton_change_clicked()
 void bossWindow::on_frame_order_destroyed()
 {
     qDebug()<<"nothing";
+}
+
+void bossWindow::on_pushButton_clicked()
+{
+    QVector <int> delivering_id_list_tmp;
+    QString md5;//临时存放16进制输入串
+    QString input;//输入串(密码与用户名拼接)
+    QString result;//存放输入串的MD5加密串
+    QString username;
+    QString password;
+    username = ui->lineEdit_uname->text();
+    password = ui->lineEdit_passwd->text();
+    input = username+password;
+    QByteArray bb;
+    bb = QCryptographicHash::hash ( input.toAscii(), QCryptographicHash::Md5 );
+    result = md5.append(bb.toHex());//加密串
+
+    all_SCY.push_back(SCY(username,result,0,0,-1,delivering_id_list_tmp,0,delivering_id_list_tmp));
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'bosswindow.ui'
 **
-** Created: Wed Jun 15 17:04:08 2016
+** Created: Wed Jun 15 18:20:40 2016
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QFormLayout>
 #include <QtGui/QFrame>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -21,6 +22,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QSpinBox>
 #include <QtGui/QTableView>
 #include <QtGui/QWidget>
@@ -48,6 +50,18 @@ public:
     QSpinBox *spinBox_add_menu;
     QPushButton *pushButton_add_menu;
     QPushButton *pushButton_change;
+    QFrame *frame_scy;
+    QTableView *tableView_scy;
+    QLabel *label_7;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QLabel *label_4;
+    QLineEdit *lineEdit_uname;
+    QLabel *label_8;
+    QLineEdit *lineEdit_passwd;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *pushButton;
 
     void setupUi(QWidget *bossWindow)
     {
@@ -72,7 +86,7 @@ public:
         frame_order = new QFrame(Under);
         frame_order->setObjectName(QString::fromUtf8("frame_order"));
         frame_order->setEnabled(true);
-        frame_order->setGeometry(QRect(7, 94, 711, 531));
+        frame_order->setGeometry(QRect(10, 100, 711, 0));
         frame_order->setFrameShape(QFrame::StyledPanel);
         frame_order->setFrameShadow(QFrame::Raised);
         label_3 = new QLabel(frame_order);
@@ -109,7 +123,7 @@ public:
 "text-align:center;"));
         frame_menu = new QFrame(Under);
         frame_menu->setObjectName(QString::fromUtf8("frame_menu"));
-        frame_menu->setGeometry(QRect(10, 100, 711, 521));
+        frame_menu->setGeometry(QRect(10, 100, 711, 0));
         frame_menu->setFrameShape(QFrame::StyledPanel);
         frame_menu->setFrameShadow(QFrame::Raised);
         tableView_menu = new QTableView(frame_menu);
@@ -145,6 +159,9 @@ public:
 
         horizontalLayout->addWidget(pushButton_add_menu);
 
+        tableView_menu->raise();
+        label_5->raise();
+        horizontalLayoutWidget->raise();
         pushButton_change = new QPushButton(Under);
         pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
         pushButton_change->setGeometry(QRect(680, 50, 31, 31));
@@ -152,6 +169,64 @@ public:
         pushButton_change->setStyleSheet(QString::fromUtf8("\n"
 "background-color:rgba(97%,80%,9%,0%);"));
         pushButton_change->setFlat(true);
+        frame_scy = new QFrame(Under);
+        frame_scy->setObjectName(QString::fromUtf8("frame_scy"));
+        frame_scy->setGeometry(QRect(10, 100, 711, 521));
+        frame_scy->setFrameShape(QFrame::StyledPanel);
+        frame_scy->setFrameShadow(QFrame::Raised);
+        tableView_scy = new QTableView(frame_scy);
+        tableView_scy->setObjectName(QString::fromUtf8("tableView_scy"));
+        tableView_scy->setGeometry(QRect(37, 74, 621, 291));
+        label_7 = new QLabel(frame_scy);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setGeometry(QRect(40, 30, 161, 31));
+        label_7->setStyleSheet(QString::fromUtf8("font: 20pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 0, 0);\n"
+"font-weight:bold;\n"
+"text-align:center;"));
+        formLayoutWidget = new QWidget(frame_scy);
+        formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(40, 410, 621, 97));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+        formLayout->setHorizontalSpacing(54);
+        formLayout->setVerticalSpacing(15);
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label_4 = new QLabel(formLayoutWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_4);
+
+        lineEdit_uname = new QLineEdit(formLayoutWidget);
+        lineEdit_uname->setObjectName(QString::fromUtf8("lineEdit_uname"));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit_uname);
+
+        label_8 = new QLabel(formLayoutWidget);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_8);
+
+        lineEdit_passwd = new QLineEdit(formLayoutWidget);
+        lineEdit_passwd->setObjectName(QString::fromUtf8("lineEdit_passwd"));
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_passwd);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer);
+
+        pushButton = new QPushButton(formLayoutWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        horizontalLayout_4->addWidget(pushButton);
+
+
+        formLayout->setLayout(2, QFormLayout::FieldRole, horizontalLayout_4);
+
         frame_menu->raise();
         label_username->raise();
         frame_order->raise();
@@ -160,6 +235,7 @@ public:
         label->raise();
         label_2->raise();
         pushButton_change->raise();
+        frame_scy->raise();
 
         retranslateUi(bossWindow);
 
@@ -186,6 +262,10 @@ public:
         label_5->setText(QApplication::translate("bossWindow", "Menu", 0, QApplication::UnicodeUTF8));
         pushButton_add_menu->setText(QApplication::translate("bossWindow", "ADD", 0, QApplication::UnicodeUTF8));
         pushButton_change->setText(QString());
+        label_7->setText(QApplication::translate("bossWindow", "\351\200\201\351\244\220\345\221\230", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("bossWindow", "\347\224\250\346\210\267\345\220\215", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("bossWindow", "\345\257\206\347\240\201", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("bossWindow", "ADD", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
