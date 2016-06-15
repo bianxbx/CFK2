@@ -273,13 +273,17 @@ int Order::show_amount()
 }
 QString Order::show_state()
 {
-    if (this->state == true)
+    if (this->state == 1)
     {
         return "Delivering";
     }
-    else
+    else if (this->state == 0)
     {
         return "Waiting";
+    }
+    else
+    {
+        return "Finished";
     }
 }
 int Order::show_dcz_id()
@@ -296,7 +300,11 @@ QString Order::show_order_address()
 }
 void Order::set_state_true()
 {
-    this->state = true;
+    this->state = 1;
+}
+void Order::set_state_fin()
+{
+    this->state = -1;
 }
 
 

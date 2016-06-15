@@ -325,7 +325,7 @@ void deliverwindow::on_pushButton_fin_clicked()
         all_SCY[active_scy].finish_delivery();//完成配送
         ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额改变反映在界面上
         ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单改变反映在界面上
-        all_orders[order_id_tmp].set_state_true();//改变订单状态
+        all_orders[order_id_tmp].set_state_fin();//改变订单状态
         all_DCZ[all_orders[order_id_tmp].show_dcz_id()].finish_order();//点餐者收到外卖
 		set_view_ing();//改变界面正在送tableview显示
         set_view_ed();//改变界面完成tableview显示

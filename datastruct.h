@@ -25,7 +25,7 @@ public:
     Order(QMap<int,int> item_tmp,int amount_tmp, QString address_tmp,int dcz_id_tmp,int scy_id_tmp); //构造函数,传递参数初始化订单
 
     void set_state_true();//完成订单设置
-
+    void set_state_fin();//完成订单设置
     QString show_order_address();//供外部获取订单地址
     QString show_state();//供外部获取订单状态
     int show_amount();	//供外部获取订单金额
@@ -40,7 +40,7 @@ private:
     int scy_id;//送餐员ID；
     int dcz_id;//点餐者ID号
     int total_amount;//订单总金额
-    bool state;//订单状态 true 正在配送 false 队列中
+    int state;//订单状态 true 正在配送 false 队列中
     QString DCZ_address;//送餐地址
 };
 

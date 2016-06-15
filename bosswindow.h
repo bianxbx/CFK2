@@ -17,6 +17,7 @@ public:
     void bossWindow::leftHide();
     void bossWindow::set_foodlist();
     void bossWindow::set_view_to();
+    void bossWindow::set_view_orders();
     explicit bossWindow(QWidget *parent = 0);
     ~bossWindow();
     
@@ -31,6 +32,7 @@ private slots:
 
 
     void on_pushButton_add_menu_clicked();
+    void on_pushButton_change_clicked();
 };
 
 
