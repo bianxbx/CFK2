@@ -34,7 +34,7 @@ public:
     QLabel *label_username;
     QFrame *frame_order;
     QLabel *label_3;
-    QTableView *tableView_to;
+    QTableView *tableView_orders;
     QLCDNumber *lcdNumber_counter;
     QLCDNumber *lcdNumber_amount;
     QLabel *label;
@@ -81,9 +81,9 @@ public:
 "color: rgb(0, 0, 0);\n"
 "font-weight:bold;\n"
 "text-align:center;"));
-        tableView_to = new QTableView(frame_order);
-        tableView_to->setObjectName(QString::fromUtf8("tableView_to"));
-        tableView_to->setGeometry(QRect(40, 90, 621, 401));
+        tableView_orders = new QTableView(frame_order);
+        tableView_orders->setObjectName(QString::fromUtf8("tableView_to"));
+        tableView_orders->setGeometry(QRect(40, 90, 621, 401));
         lcdNumber_counter = new QLCDNumber(Under);
         lcdNumber_counter->setObjectName(QString::fromUtf8("lcdNumber_counter"));
         lcdNumber_counter->setGeometry(QRect(360, 47, 101, 41));
