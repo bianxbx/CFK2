@@ -14,6 +14,7 @@
 #include <QPalette>
 #include <QBitmap>
 
+#include <QDebug>
 #include "ui_deliverwindow.h"
 #include "login.h"
 #include "global.h"
@@ -70,6 +71,7 @@ deliverwindow::deliverwindow(QWidget *parent) :
     minButton->setStyleSheet("background-color:transparent;");
     closeButton->setStyleSheet("background-color:transparent;");
     ui->frame_view->hide();//查看页面隐藏
+    ui->label_urgent->hide();
 	ui->label_username->setText(all_SCY[active_scy].show_username());//用户名设置
 	ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额
 	ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单数
@@ -90,6 +92,8 @@ deliverwindow::deliverwindow(QWidget *parent) :
     model_to_deliver->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("ID")));
     model_to_deliver->setHorizontalHeaderItem(1,new QStandardItem(QObject::tr("Address")));
     model_to_deliver->setHorizontalHeaderItem(2,new QStandardItem(QObject::tr("Amount")));
+    model_to_deliver->setHorizontalHeaderItem(3,new QStandardItem(QObject::tr("Urgent")));
+
     ui->tableView_to ->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView_to->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView_to->setModel(model_to_deliver);
@@ -166,8 +170,18 @@ void deliverwindow::set_view_ing()
         model_delivering->setItem(0, 0, new QStandardItem(QString::number(order_id_tmp,10)));//设置订单号
         model_delivering->setItem(0, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));//设置地址
         model_delivering->setItem(0, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));//设置总金额
-        it = all_orders[order_id_tmp].item.begin();//迭代器指向订单的第一个菜品
 
+        it = all_orders[order_id_tmp].item.begin();//迭代器指向订单的第一个菜品
+        if (all_orders[order_id_tmp].show_urgent() == true)
+        {
+
+            ui->label_urgent->show();
+        }
+        else
+        {
+
+            ui->label_urgent->hide();
+        }
 		/*循环输出每个菜品*/
         for (i = 0;i<all_orders[order_id_tmp].item.size();i++)
         {
@@ -218,16 +232,24 @@ void deliverwindow::set_view_to()
             model_to_deliver->setItem(i, 0, new QStandardItem(QString::number(order_id_tmp,10)));
             model_to_deliver->setItem(i, 1, new QStandardItem(all_orders[order_id_tmp].show_order_address()));
             model_to_deliver->setItem(i, 2, new QStandardItem(QString::number( all_orders[order_id_tmp].show_amount(),10)));
+            if (all_orders[order_id_tmp].show_urgent() == true)
+            {
+                model_to_deliver->setItem(i, 3, new QStandardItem("已催单"));//设置总金额
+            }
+            else
+                {
+                model_to_deliver->setItem(i, 3, new QStandardItem("正常"));//设置总金额
+            }
             it = all_orders[order_id_tmp].item.begin();
 			//输出每个菜品
             for (j = 0;j<all_orders[order_id_tmp].item.size();j++)
             {
                 food_id = it.key();
                 food_num = it.value();
-                model_to_deliver->setHorizontalHeaderItem(j*2+3,new QStandardItem(QObject::tr("Name")));
-                model_to_deliver->setHorizontalHeaderItem(j*2+4,new QStandardItem(QObject::tr("Number")));
-                model_to_deliver->setItem(i, j*2+3, new QStandardItem(all_food[food_id].show_food_name()));
-                model_to_deliver->setItem(i, j*2+4, new QStandardItem(QString::number(food_num,10)));
+                model_to_deliver->setHorizontalHeaderItem(j*2+4,new QStandardItem(QObject::tr("Name")));
+                model_to_deliver->setHorizontalHeaderItem(j*2+5,new QStandardItem(QObject::tr("Number")));
+                model_to_deliver->setItem(i, j*2+4, new QStandardItem(all_food[food_id].show_food_name()));
+                model_to_deliver->setItem(i, j*2+5, new QStandardItem(QString::number(food_num,10)));
                 it++;
             }
         }
@@ -322,6 +344,7 @@ void deliverwindow::on_pushButton_fin_clicked()
     if (order_id_tmp != -1)
     {
 		//有正在配送的
+        ui->label_urgent->hide();
         all_SCY[active_scy].finish_delivery();//完成配送
         ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额改变反映在界面上
         ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单改变反映在界面上

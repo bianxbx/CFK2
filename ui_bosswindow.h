@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'bosswindow.ui'
 **
-** Created: Wed Jun 15 18:20:40 2016
+** Created: Thu Jun 16 14:34:43 2016
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -86,7 +86,7 @@ public:
         frame_order = new QFrame(Under);
         frame_order->setObjectName(QString::fromUtf8("frame_order"));
         frame_order->setEnabled(true);
-        frame_order->setGeometry(QRect(10, 100, 711, 0));
+        frame_order->setGeometry(QRect(10, 100, 711, 521));
         frame_order->setFrameShape(QFrame::StyledPanel);
         frame_order->setFrameShadow(QFrame::Raised);
         label_3 = new QLabel(frame_order);
@@ -123,7 +123,7 @@ public:
 "text-align:center;"));
         frame_menu = new QFrame(Under);
         frame_menu->setObjectName(QString::fromUtf8("frame_menu"));
-        frame_menu->setGeometry(QRect(10, 100, 711, 0));
+        frame_menu->setGeometry(QRect(10, 100, 711, 521));
         frame_menu->setFrameShape(QFrame::StyledPanel);
         frame_menu->setFrameShadow(QFrame::Raised);
         tableView_menu = new QTableView(frame_menu);
@@ -159,9 +159,6 @@ public:
 
         horizontalLayout->addWidget(pushButton_add_menu);
 
-        tableView_menu->raise();
-        label_5->raise();
-        horizontalLayoutWidget->raise();
         pushButton_change = new QPushButton(Under);
         pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
         pushButton_change->setGeometry(QRect(680, 50, 31, 31));

@@ -262,12 +262,21 @@ Order::Order(QMap<int, int> item_tmp , int amount_tmp,QString address_tmp,int dc
 {
     this->item = item_tmp;
     this->total_amount = amount_tmp;
+    this->urgent = false;
     this->state = 0;
     this->DCZ_address = address_tmp;
     this->dcz_id = dcz_id_tmp;
     this->scy_id = scy_id_tmp;
 }
+bool Order::show_urgent()
+{
 
+    return urgent;
+}
+void Order::set_urgent()
+{
+    this->urgent = true;
+}
 int Order::show_amount()
 {
     return total_amount;

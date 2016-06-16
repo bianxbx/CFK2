@@ -79,7 +79,7 @@ bossWindow::bossWindow(QWidget *parent) :
     qDebug()<< "asdasd";
 //    ui->frame_menu->hide();
     ui->frame_order->hide();//查看页面隐藏
-    ui->frame_scy->show();
+    ui->frame_scy->hide();
     ui->label_username->setText(all_SCY[active_scy].show_username());//用户名设置
     ui->lcdNumber_amount->display(all_SCY[active_scy].show_amount_count());//总金额
     ui->lcdNumber_counter->display(all_SCY[active_scy].show_order_count());//总订单数
@@ -210,11 +210,11 @@ void bossWindow::set_view_scy()
             tmp = QString::number(all_SCY[scy_id_tmp].show_delivering_order_id());
         }
 
-        model_scy->setItem(i, 0, new QStandardItem(QString::number(scy_id_tmp,10)));
-        model_scy->setItem(i, 1, new QStandardItem(all_SCY[scy_id_tmp].show_username()));
-        model_scy->setItem(i, 2, new QStandardItem(tmp));
-        model_scy->setItem(i, 3, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_order_count())));
-        model_scy->setItem(i, 4, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_amount_count())));
+        model_scy->setItem(i-1, 0, new QStandardItem(QString::number(scy_id_tmp,10)));
+        model_scy->setItem(i-1, 1, new QStandardItem(all_SCY[scy_id_tmp].show_username()));
+        model_scy->setItem(i-1, 2, new QStandardItem(tmp));
+        model_scy->setItem(i-1, 3, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_order_count())));
+        model_scy->setItem(i-1, 4, new QStandardItem(QString::number(all_SCY[scy_id_tmp].show_amount_count())));
     }
 }
 
@@ -402,4 +402,5 @@ void bossWindow::on_pushButton_clicked()
     result = md5.append(bb.toHex());//加密串
 
     all_SCY.push_back(SCY(username,result,0,0,-1,delivering_id_list_tmp,0,delivering_id_list_tmp));
+    set_view_scy();
 }

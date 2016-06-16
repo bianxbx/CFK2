@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Jun 15 18:17:47 2016
+** Created: Thu Jun 16 10:49:25 2016
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -49,6 +49,9 @@ public:
     QLabel *label_chongzhi;
     QLabel *label_7;
     QLabel *label_scyname;
+    QPushButton *pushButton_cancel;
+    QPushButton *pushButton_urgent;
+    QLabel *label_urgent;
     QTableView *tableView_Food_ordered;
     QLCDNumber *lcdNumber_order_amount;
     QLabel *label_2;
@@ -168,6 +171,15 @@ public:
         label_scyname->setGeometry(QRect(170, 230, 231, 41));
         label_scyname->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         label_scyname->setWordWrap(true);
+        pushButton_cancel = new QPushButton(frame_user_view);
+        pushButton_cancel->setObjectName(QString::fromUtf8("pushButton_cancel"));
+        pushButton_cancel->setGeometry(QRect(294, 162, 101, 31));
+        pushButton_urgent = new QPushButton(frame_user_view);
+        pushButton_urgent->setObjectName(QString::fromUtf8("pushButton_urgent"));
+        pushButton_urgent->setGeometry(QRect(290, 230, 101, 31));
+        label_urgent = new QLabel(frame_user_view);
+        label_urgent->setObjectName(QString::fromUtf8("label_urgent"));
+        label_urgent->setGeometry(QRect(170, 270, 91, 21));
         tableView_Food_ordered = new QTableView(Under);
         tableView_Food_ordered->setObjectName(QString::fromUtf8("tableView_Food_ordered"));
         tableView_Food_ordered->setGeometry(QRect(450, 120, 251, 251));
@@ -290,6 +302,19 @@ public:
 "color: rgb(50, 93, 153);\n"
 "font-weight:bold;\n"
 "text-align:center;"));
+        frame_user_order->raise();
+        frame_user_view->raise();
+        tableView_Food_ordered->raise();
+        lcdNumber_order_amount->raise();
+        label_2->raise();
+        label_user_account->raise();
+        pushButton_change->raise();
+        label->raise();
+        pushButton_order->raise();
+        pushButton_check->raise();
+        label_succ->raise();
+        label_Fail->raise();
+        leftFrame->raise();
         MainWindow->setCentralWidget(centralwidget);
         Under->raise();
         label_username->raise();
@@ -315,6 +340,9 @@ public:
         label_chongzhi->setText(QApplication::translate("MainWindow", "\345\205\205\345\200\274\345\244\261\350\264\245\357\274\201\350\257\267\350\276\223\345\205\245\351\225\277\345\272\246\344\270\2728\344\275\215\347\232\204\345\205\205\345\200\274\345\215\241\345\257\206\347\240\201\357\274\201", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("MainWindow", "\345\210\206\351\205\215\351\200\201\351\244\220\345\221\230", 0, QApplication::UnicodeUTF8));
         label_scyname->setText(QApplication::translate("MainWindow", "\350\256\242\345\215\225\347\212\266\346\200\201", 0, QApplication::UnicodeUTF8));
+        pushButton_cancel->setText(QApplication::translate("MainWindow", "\351\200\200\345\215\225", 0, QApplication::UnicodeUTF8));
+        pushButton_urgent->setText(QApplication::translate("MainWindow", "\345\202\254\345\215\225", 0, QApplication::UnicodeUTF8));
+        label_urgent->setText(QApplication::translate("MainWindow", "\345\267\262\345\202\254\345\215\225", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "\350\264\246\346\210\267\344\275\231\351\242\235\357\274\232\357\277\245", 0, QApplication::UnicodeUTF8));
         label_user_account->setText(QApplication::translate("MainWindow", "200", 0, QApplication::UnicodeUTF8));
         pushButton_change->setText(QString());

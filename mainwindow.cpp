@@ -25,7 +25,7 @@
 #include <QTime>
 #include <QPalette>
 #include <QBitmap>
-
+#include <QDebug>
 
 #include <iostream>
 #include <string>
@@ -104,10 +104,11 @@ customerwindow::customerwindow(QWidget *parent) :
     window_flag = 1;
     ui->frame_user_view->hide();
     j = 0;
+    ui->label_urgent->hide();
     ui->frame_detial ->hide ();
     ui->leftFrame->hide();
     set_view_to();
-	
+
 	/*菜单初始化*/
     model_menu->setHorizontalHeaderItem(0,new QStandardItem(QObject::tr("Name")));//行标设置
     model_menu->setHorizontalHeaderItem(1,new QStandardItem(QObject::tr("Price")));
@@ -387,7 +388,7 @@ void customerwindow::on_pushButton_order_clicked()
     qsrand(time.msec()+time.second()*1000);
     int randn=qrand()%(all_SCY.size()-1) + 1;//随机指派可用订餐员
 	int scy_num = randn;    
-    if (all_DCZ[active_dcz].show_account()>= amount_tmp)
+    if (all_DCZ[active_dcz].show_account()>= amount_tmp&& amount_tmp != 0)
     {
 		//如果订单金额不大于用户余额
         Order tmp(order_tmp,amount_tmp,all_DCZ[active_dcz].show_address(),active_dcz,scy_num);//生成订单
@@ -475,7 +476,7 @@ Remark:
 *************************************/
 void customerwindow::set_view_to()
 {
-
+    qDebug() << "asdasdasd";
     int order_id_tmp;
     int food_id,food_num,j;
     QMap<int, int>::iterator it;
@@ -483,7 +484,16 @@ void customerwindow::set_view_to()
     if (all_DCZ[active_dcz].order_id_list.size() != 0)
     {
 		//如果有已点订单
+        ui->pushButton_urgent->show();
         order_id_tmp = all_DCZ[active_dcz].order_id_list[0];//
+        if(all_orders[order_id_tmp].show_urgent() == true)
+        {
+            ui->label_urgent->show();
+        }
+        else
+        {
+            ui->label_urgent->hide();
+        }
         it = all_orders[order_id_tmp].item.begin();
         for (j = 0;j<all_orders[order_id_tmp].item.size();j++)//把每个食物名字,数量输出
         {
@@ -499,6 +509,7 @@ void customerwindow::set_view_to()
     else
     {
 		//如果没订,清空
+        ui->pushButton_urgent->hide();
         model_order_list->setColumnCount(2);
         model_order_list->setRowCount(0);
     }
@@ -629,4 +640,88 @@ void customerwindow::on_pushButton_chongzhi_clicked()
     ui->label_chongzhi->show();
     ui->label_user_account->setText(QString::number(all_DCZ[active_dcz].show_account(),10));//用户金额刷新
     ui->lineEdit_chongzhi->clear();//输入框清空
+}
+
+void customerwindow::on_pushButton_cancel_clicked()
+{
+    int order_id = all_DCZ[active_dcz].show_order(0);
+    int scy_id = all_orders[order_id].show_scy_id();
+    if(all_orders[order_id].show_state() == "Waiting")
+    {
+        all_DCZ[active_dcz].finish_order();
+        QVector <int>::iterator it;
+        for( it = all_SCY[scy_id].deliver_list.begin();it!=all_SCY[scy_id].deliver_list.end();)
+        {
+            qDebug()<< all_SCY[scy_id].deliver_list.size();
+            if(*it == order_id)
+            {
+                it=all_SCY[scy_id].deliver_list.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+        order_tmp.clear();
+        amount_tmp = 0;
+        QString state_tmp;
+        /*显示订单状态*/
+        if (all_DCZ[active_dcz].order_id_list.size()!= 0)
+        {
+            //有订单
+            state_tmp = all_orders[all_DCZ[active_dcz].show_order(0)].show_state();//临时订单状态设置为订单状态
+            ui->label_scyname->setText(all_SCY[all_orders[all_DCZ[active_dcz].order_id_list[0]].show_scy_id()].show_username());//显示送餐员名字
+            ui->pushButton_order->hide();//隐藏下单按钮
+            ui->pushButton_check->show();//显示查询按钮
+            ui->lcdNumber_order_amount->display(all_orders[all_DCZ[active_dcz].order_id_list[0]].show_amount());//显示订单金额
+        }
+        else
+        {
+            //无订单
+            ui->pushButton_check->hide();//隐藏查询按钮
+            ui->pushButton_order->show();//显示下单按钮
+            ui->label_scyname->setText("无订单");//显示订单状态
+            ui->lcdNumber_order_amount->display(0);//显示订单金额
+            state_tmp = "无订单";
+            ui->pushButton_urgent->hide();
+        }
+        ui->label_order_state->setText(state_tmp);//显示订单状态
+        set_view_to();
+
+    }
+    else if (all_orders[all_DCZ[active_dcz].show_order(0)].show_state() == "Delivering")
+    {
+
+    }
+    else
+    {
+
+    }
+}
+
+void customerwindow::on_pushButton_urgent_clicked()
+{
+    all_orders[all_DCZ[active_dcz].show_order(0)].set_urgent();
+    ui->label_urgent->show();
+    QString state_tmp;
+    /*显示订单状态*/
+    if (all_DCZ[active_dcz].order_id_list.size()!= 0)
+    {
+        //有订单
+        state_tmp = all_orders[all_DCZ[active_dcz].show_order(0)].show_state();//临时订单状态设置为订单状态
+        ui->label_scyname->setText(all_SCY[all_orders[all_DCZ[active_dcz].order_id_list[0]].show_scy_id()].show_username());//显示送餐员名字
+        ui->pushButton_order->hide();//隐藏下单按钮
+        ui->pushButton_check->show();//显示查询按钮
+        ui->lcdNumber_order_amount->display(all_orders[all_DCZ[active_dcz].order_id_list[0]].show_amount());//显示订单金额
+    }
+    else
+    {
+        //无订单
+        ui->pushButton_check->hide();//隐藏查询按钮
+        ui->pushButton_order->show();//显示下单按钮
+        ui->label_scyname->setText("无订单");//显示订单状态
+        ui->lcdNumber_order_amount->display(0);//显示订单金额
+        state_tmp = "无订单";
+    }
+    ui->label_order_state->setText(state_tmp);//显示订单状态
 }

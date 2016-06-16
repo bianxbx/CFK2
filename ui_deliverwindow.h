@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'deliverwindow.ui'
 **
-** Created: Wed Jun 15 18:17:47 2016
+** Created: Thu Jun 16 10:38:45 2016
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,6 +36,7 @@ public:
     QLabel *label_4;
     QPushButton *pushButton_acc;
     QPushButton *pushButton_fin;
+    QLabel *label_urgent;
     QLCDNumber *lcdNumber_counter;
     QLCDNumber *lcdNumber_amount;
     QLabel *label;
@@ -107,6 +108,13 @@ public:
 "color: rgb(0, 0, 0);\n"
 "font-weight:bold;\n"
 "text-align:center;"));
+        label_urgent = new QLabel(frame_order);
+        label_urgent->setObjectName(QString::fromUtf8("label_urgent"));
+        label_urgent->setGeometry(QRect(180, 20, 481, 61));
+        label_urgent->setStyleSheet(QString::fromUtf8("font: 30pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 0, 0);\n"
+"font-weight:bold;\n"
+"text-align:center;"));
         lcdNumber_counter = new QLCDNumber(Under);
         lcdNumber_counter->setObjectName(QString::fromUtf8("lcdNumber_counter"));
         lcdNumber_counter->setGeometry(QRect(360, 47, 101, 41));
@@ -144,6 +152,9 @@ public:
 "color: rgb(0, 0, 0);\n"
 "font-weight:bold;\n"
 "text-align:center;"));
+        tableView_ed->raise();
+        label_5->raise();
+        frame_order->raise();
         pushButton_change = new QPushButton(Under);
         pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
         pushButton_change->setGeometry(QRect(680, 50, 31, 31));
@@ -173,6 +184,7 @@ public:
         label_4->setText(QApplication::translate("deliverwindow", "\345\276\205\351\200\201\350\256\242\345\215\225", 0, QApplication::UnicodeUTF8));
         pushButton_acc->setText(QApplication::translate("deliverwindow", "\346\216\245\345\217\227\350\256\242\345\215\225\342\206\221", 0, QApplication::UnicodeUTF8));
         pushButton_fin->setText(QApplication::translate("deliverwindow", "\345\256\214\346\210\220\351\205\215\351\200\201\342\206\222", 0, QApplication::UnicodeUTF8));
+        label_urgent->setText(QApplication::translate("deliverwindow", "\347\224\250\346\210\267\345\267\262\347\273\217\345\202\254\345\215\225\350\257\267\345\260\275\345\277\253\351\205\215\351\200\201\357\274\201", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("deliverwindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

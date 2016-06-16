@@ -33,7 +33,8 @@ public:
     int show_scy_id();//供外部获取送餐员号
     int id;//订单ID
     QMap<int,int>item;
-
+    bool show_urgent(void);
+    void set_urgent(void);
     friend QDataStream& operator <<(QDataStream &out_stream,Order &ord);//出操作符友元
     friend QDataStream& operator >>(QDataStream &out_stream,Order &ord);//入操作符友元
 private:
@@ -41,6 +42,7 @@ private:
     int dcz_id;//点餐者ID号
     int total_amount;//订单总金额
     int state;//订单状态 true 正在配送 false 队列中
+    bool urgent;//cuidan
     QString DCZ_address;//送餐地址
 };
 
@@ -53,6 +55,7 @@ public:
     void Login();//登录
 
     int id;
+
     QString show_username(void);//供外部获取用户名
     QString show_password(void);//供外部获取密码
 private:

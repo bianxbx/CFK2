@@ -42,6 +42,10 @@ private slots:
 
     void on_pushButton_chongzhi_clicked();
 
+    void on_pushButton_cancel_clicked();
+
+    void on_pushButton_urgent_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
