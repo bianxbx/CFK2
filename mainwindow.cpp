@@ -37,6 +37,7 @@
 #include "datastruct.h"
 #include "login.h"
 
+#include <QtTest/QtTest>
 using namespace std;
 
 QStandardItemModel *model_order_list = new QStandardItemModel();//µã²Í tableview model

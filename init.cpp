@@ -9,6 +9,8 @@
 #include "global.h"
 #include "init.h"
 #include <QDebug>
+
+
 /********************************************************************
 	created:	2013/12/3 15:37
 	filename:	C:\Users\hp\Desktop\CFK\CFK2\init.cpp

@@ -1,7 +1,11 @@
 /********************************************************************************
 ** Form generated from reading UI file 'bosswindow.ui'
 **
+<<<<<<< HEAD
 ** Created: Thu Jun 16 14:34:43 2016
+=======
+** Created: Wed May 11 14:46:50 2016
+>>>>>>> master
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,7 +18,10 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+<<<<<<< HEAD
 #include <QtGui/QFormLayout>
+=======
+>>>>>>> master
 #include <QtGui/QFrame>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -22,7 +29,10 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+<<<<<<< HEAD
 #include <QtGui/QSpacerItem>
+=======
+>>>>>>> master
 #include <QtGui/QSpinBox>
 #include <QtGui/QTableView>
 #include <QtGui/QWidget>
@@ -50,6 +60,7 @@ public:
     QSpinBox *spinBox_add_menu;
     QPushButton *pushButton_add_menu;
     QPushButton *pushButton_change;
+<<<<<<< HEAD
     QFrame *frame_scy;
     QTableView *tableView_scy;
     QLabel *label_7;
@@ -62,6 +73,8 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton;
+=======
+>>>>>>> master
 
     void setupUi(QWidget *bossWindow)
     {
@@ -72,7 +85,11 @@ public:
         Under->setObjectName(QString::fromUtf8("Under"));
         Under->setGeometry(QRect(0, 0, 735, 638));
         Under->setStyleSheet(QString::fromUtf8("#Under{\n"
+<<<<<<< HEAD
 "	border-image: url(:/image/uibBG.png);\n"
+=======
+"	border-image: url(:/image/uidBG.png);\n"
+>>>>>>> master
 "}"));
         Under->setFrameShape(QFrame::StyledPanel);
         Under->setFrameShadow(QFrame::Raised);
@@ -85,8 +102,12 @@ public:
 "text-align:center;"));
         frame_order = new QFrame(Under);
         frame_order->setObjectName(QString::fromUtf8("frame_order"));
+<<<<<<< HEAD
         frame_order->setEnabled(true);
         frame_order->setGeometry(QRect(10, 100, 711, 521));
+=======
+        frame_order->setGeometry(QRect(7, 94, 16, 531));
+>>>>>>> master
         frame_order->setFrameShape(QFrame::StyledPanel);
         frame_order->setFrameShadow(QFrame::Raised);
         label_3 = new QLabel(frame_order);
@@ -97,7 +118,11 @@ public:
 "font-weight:bold;\n"
 "text-align:center;"));
         tableView_orders = new QTableView(frame_order);
+<<<<<<< HEAD
         tableView_orders->setObjectName(QString::fromUtf8("tableView_orders"));
+=======
+        tableView_orders->setObjectName(QString::fromUtf8("tableView_to"));
+>>>>>>> master
         tableView_orders->setGeometry(QRect(40, 90, 621, 401));
         lcdNumber_counter = new QLCDNumber(Under);
         lcdNumber_counter->setObjectName(QString::fromUtf8("lcdNumber_counter"));
@@ -166,6 +191,7 @@ public:
         pushButton_change->setStyleSheet(QString::fromUtf8("\n"
 "background-color:rgba(97%,80%,9%,0%);"));
         pushButton_change->setFlat(true);
+<<<<<<< HEAD
         frame_scy = new QFrame(Under);
         frame_scy->setObjectName(QString::fromUtf8("frame_scy"));
         frame_scy->setGeometry(QRect(10, 100, 711, 521));
@@ -224,6 +250,8 @@ public:
 
         formLayout->setLayout(2, QFormLayout::FieldRole, horizontalLayout_4);
 
+=======
+>>>>>>> master
         frame_menu->raise();
         label_username->raise();
         frame_order->raise();
@@ -232,7 +260,10 @@ public:
         label->raise();
         label_2->raise();
         pushButton_change->raise();
+<<<<<<< HEAD
         frame_scy->raise();
+=======
+>>>>>>> master
 
         retranslateUi(bossWindow);
 
@@ -243,7 +274,11 @@ public:
     {
         bossWindow->setWindowTitle(QApplication::translate("bossWindow", "Form", 0, QApplication::UnicodeUTF8));
         label_username->setText(QApplication::translate("bossWindow", "USERNAME", 0, QApplication::UnicodeUTF8));
+<<<<<<< HEAD
         label_3->setText(QApplication::translate("bossWindow", "\350\256\242\345\215\225\344\277\241\346\201\257", 0, QApplication::UnicodeUTF8));
+=======
+        label_3->setText(QApplication::translate("bossWindow", "\345\275\223\345\211\215\350\256\242\345\215\225", 0, QApplication::UnicodeUTF8));
+>>>>>>> master
         label->setText(QApplication::translate("bossWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -259,10 +294,13 @@ public:
         label_5->setText(QApplication::translate("bossWindow", "Menu", 0, QApplication::UnicodeUTF8));
         pushButton_add_menu->setText(QApplication::translate("bossWindow", "ADD", 0, QApplication::UnicodeUTF8));
         pushButton_change->setText(QString());
+<<<<<<< HEAD
         label_7->setText(QApplication::translate("bossWindow", "\351\200\201\351\244\220\345\221\230", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("bossWindow", "\347\224\250\346\210\267\345\220\215", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("bossWindow", "\345\257\206\347\240\201", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("bossWindow", "ADD", 0, QApplication::UnicodeUTF8));
+=======
+>>>>>>> master
     } // retranslateUi
 
 };
